@@ -71,7 +71,7 @@ A decoder that understands this tag MUST enforce all of the following: (1) The e
 
 ## Deterministic Encoding and Preferred Serialization
 
-CBOR's preferred serialization and deterministically encoded CBOR rules ({{RFC8949, Section 4.2}}) apply to the tag and to the bstr's container (for example, definite length), not to the content bytes themselves. The content of the bstr is application-defined and MUST be preserved exactly. When an application needs exact preservation of a NaN, the sender MUST use this tag in place of a floating-point NaN literal.
+CBOR's preferred serialization and deterministically encoded CBOR rules ({{RFC8949, Section 4.2}}) apply to the tag and to the bstr's container (for example, definite length), not to the content bytes themselves. The content of the bstr is application-defined and MUST be preserved exactly. When an application needs exact preservation of a NaN, the sender SHOULD use this tag in place of a floating-point NaN literal.
 
 ## Interoperability with Deterministic Profiles and dCBOR
 

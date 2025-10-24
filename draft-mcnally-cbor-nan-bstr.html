@@ -1218,7 +1218,7 @@ appear in all capitals, as shown here.<a href="#section-1-1" class="pilcrow">¶<
         <h3 id="name-deterministic-encoding-and-">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-deterministic-encoding-and-" class="section-name selfRef">Deterministic Encoding and Preferred Serialization</a>
         </h3>
-<p id="section-3.3-1">CBOR's preferred serialization and deterministically encoded CBOR rules (<span>[<a href="#RFC8949" class="cite xref">RFC8949</a>], <a href="https://rfc-editor.org/rfc/rfc8949#section-4.2" class="relref">Section 4.2</a></span>) apply to the tag and to the bstr's container (for example, definite length), not to the content bytes themselves. The content of the bstr is application-defined and <span class="bcp14">MUST</span> be preserved exactly. When an application needs exact preservation of a NaN, the sender <span class="bcp14">MUST</span> use this tag in place of a floating-point NaN literal.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">CBOR's preferred serialization and deterministically encoded CBOR rules (<span>[<a href="#RFC8949" class="cite xref">RFC8949</a>], <a href="https://rfc-editor.org/rfc/rfc8949#section-4.2" class="relref">Section 4.2</a></span>) apply to the tag and to the bstr's container (for example, definite length), not to the content bytes themselves. The content of the bstr is application-defined and <span class="bcp14">MUST</span> be preserved exactly. When an application needs exact preservation of a NaN, the sender <span class="bcp14">SHOULD</span> use this tag in place of a floating-point NaN literal.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="interoperability-with-deterministic-profiles-and-dcbor">

@@ -174,7 +174,7 @@ Table of Contents
    container (for example, definite length), not to the content bytes
    themselves.  The content of the bstr is application-defined and MUST
    be preserved exactly.  When an application needs exact preservation
-   of a NaN, the sender MUST use this tag in place of a floating-point
+   of a NaN, the sender SHOULD use this tag in place of a floating-point
    NaN literal.
 
 3.4.  Interoperability with Deterministic Profiles and dCBOR
