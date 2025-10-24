@@ -1,7 +1,7 @@
 LIBDIR := lib
 
 # Include source files on gh-pages for metadata extraction
-GHPAGES_EXTRA := draft-mcnally-cbor-nan-tag.md
+GHPAGES_EXTRA := draft-mcnally-cbor-nan-bstr.md
 
 include $(LIBDIR)/main.mk
 

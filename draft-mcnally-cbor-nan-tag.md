@@ -1,7 +1,7 @@
 ---
 title: A CBOR Tag for Lossless Transport of IEEE-754 NaN Bit Patterns
 abbrev: nan-bstr
-docname: draft-mcnally-cbor-nan-tag-latest
+docname: draft-mcnally-cbor-nan-bstr-latest
 category: std
 ipr: trust200902
 area: ART
