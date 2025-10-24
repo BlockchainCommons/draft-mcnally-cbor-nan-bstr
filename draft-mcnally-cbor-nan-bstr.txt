@@ -40,7 +40,7 @@ About This Document
    https://www.ietf.org/mailman/listinfo/cbor/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/https://github.com/cbor-wg.
+   https://github.com/BlockchainCommons/draft-mcnally-cbor-nan-bstr.
 
 Status of This Memo
 
@@ -191,7 +191,7 @@ Table of Contents
 
 4.  Examples and Diagnostic Notation
 
-   The assigned tag number for this specification is 102.  Diagnostic
+   The requested tag number for this specification is 102.  Diagnostic
    notation shows tags in decimal by default. (a) Half-precision quiet
    NaN (0x7E00): 102(h'7E00'). (b) Single-precision quiet NaN with
    payload 0x000001: 102(h'7FC00001'). (c) Double-precision signaling
