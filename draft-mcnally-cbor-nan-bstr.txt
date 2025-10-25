@@ -76,30 +76,25 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Motivation and Rationale
-   3.  The nan-bstr Tag
-     3.1.  Semantics
-     3.2.  Validity
-     3.3.  Deterministic Encoding and Preferred Serialization
-     3.4.  Interoperability with Deterministic Profiles and dCBOR
-   4.  Examples and Diagnostic Notation
-   5.  CDDL
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Implementation Notes
-   9.  Acknowledgments
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   2.  Conventions and Definitions
+   3.  Motivation and Rationale
+   4.  The nan-bstr Tag
+     4.1.  Semantics
+     4.2.  Validity
+     4.3.  Deterministic Encoding and Preferred Serialization
+     4.4.  Interoperability with Deterministic Profiles and dCBOR
+   5.  Examples and Diagnostic Notation
+   6.  CDDL
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Implementation Notes
+   10. Acknowledgments
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Author's Address
 
 1.  Introduction
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
 
    CBOR defines an extensible binary format with semantic tags (major
    type 6) that can ascribe additional meaning to enclosed data items
@@ -114,7 +109,15 @@ Table of Contents
    attributes independent of the policies that an ecosystem applies to
    floating-point numbers.
 
-2.  Motivation and Rationale
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Motivation and Rationale
 
    IEEE-754 purposefully leaves NaNs incomparable and allows
    implementations to use sign, signaling/quiet, and payload bits for
@@ -139,9 +142,9 @@ Table of Contents
    A tag solves the transport problem without weakening profile policies
    for ordinary numeric values.
 
-3.  The nan-bstr Tag
+4.  The nan-bstr Tag
 
-3.1.  Semantics
+4.1.  Semantics
 
    The nan-bstr tag denotes that its content is a CBOR byte string whose
    bytes are, in network byte order (big-endian), the bit pattern of a
@@ -154,7 +157,7 @@ Table of Contents
    information if the platform cannot represent signaling NaNs or
    payload bits.
 
-3.2.  Validity
+4.2.  Validity
 
    A decoder that understands this tag MUST enforce all of the
    following: (1) The enclosed bstr length is exactly 2, 4, or 8. (2)
@@ -167,7 +170,7 @@ Table of Contents
    itself.  If any check fails, the decoder MUST treat the tagged value
    as invalid for this tag and handle it per application error policy.
 
-3.3.  Deterministic Encoding and Preferred Serialization
+4.3.  Deterministic Encoding and Preferred Serialization
 
    CBOR's preferred serialization and deterministically encoded CBOR
    rules ([RFC8949], Section 4.2) apply to the tag and to the bstr's
@@ -177,7 +180,7 @@ Table of Contents
    of a NaN, the sender SHOULD use this tag in place of a floating-point
    NaN literal.
 
-3.4.  Interoperability with Deterministic Profiles and dCBOR
+4.4.  Interoperability with Deterministic Profiles and dCBOR
 
    Deterministic profiles often restrict or canonicalize floating-point
    representations to ensure byte-for-byte stability.  For example, the
@@ -189,7 +192,7 @@ Table of Contents
    NaN otherwise.  This keeps deterministic rules for numbers intact
    while providing a precise transport for exceptional cases.
 
-4.  Examples and Diagnostic Notation
+5.  Examples and Diagnostic Notation
 
    The requested tag number for this specification is 102.  Diagnostic
    notation shows tags in decimal by default. (a) Half-precision quiet
@@ -204,13 +207,13 @@ Table of Contents
    formation still retain the bit pattern for pass-through or later
    analysis.
 
-5.  CDDL
+6.  CDDL
 
    The following CDDL ([RFC8610]) defines the tagged value.
 
    nan-bstr = #6.102 (bstr .size (2 / 4 / 8))
 
-6.  Security Considerations
+7.  Security Considerations
 
    Treat the bstr as untrusted input.  A decoder MUST validate NaN well-
    formedness for the indicated width.  Implementations MUST avoid
@@ -221,7 +224,7 @@ Table of Contents
    to 2/4/8 bytes and introduces no variable-length resource concerns
    beyond those of CBOR bstr handling ([RFC8949]).
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    IANA is requested to register one new entry in the CBOR Tags registry
    ([IANA-CBOR-TAGS]) using the template of [RFC8949], Section 9.2.
@@ -230,13 +233,12 @@ Table of Contents
 
    *  Data item: byte string.
 
-   *  Semantics: IEEE-754 NaN encoded as a byte string (nan-bstr).
-      Preserves sign, signaling/quiet bit, payload bits, and width
-      (2/4/8 bytes in network byte order).
+   *  Semantics: IEEE-754 NaN encoded as a 2, 4, or 8 octet byte string
+      (nan-bstr).
 
    *  Reference: This document.
 
-8.  Implementation Notes
+9.  Implementation Notes
 
    Encoders SHOULD use definite-length bstrs.  Decoders SHOULD expose
    APIs that surface width, sign, signaling/quiet, and payload without
@@ -247,15 +249,15 @@ Table of Contents
    nan-bstr as the explicit mechanism for exact preservation when
    needed.
 
-9.  Acknowledgments
+10.  Acknowledgments
 
    Thanks to CBOR WG participants for discussion of determinism and
    floating-point edge cases, and to implementers who documented NaN
    canonicalization behavior across platforms.
 
-10.  References
+11.  References
 
-10.1.  Normative References
+11.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -277,7 +279,7 @@ Table of Contents
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
 
-10.2.  Informative References
+11.2.  Informative References
 
    [CBOR-WG-NaN-Threads]
               "CBOR WG mailing list threads on NaN and determinism",

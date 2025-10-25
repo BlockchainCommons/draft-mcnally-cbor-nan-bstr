@@ -51,9 +51,11 @@ IEEE-754 NaN formations are not numbers and have no equivalence class. They are 
 
 # Introduction
 
-{::boilerplate bcp14-tagged}
-
 CBOR defines an extensible binary format with semantic tags (major type 6) that can ascribe additional meaning to enclosed data items ({{RFC8949}}). While CBOR's floating-point types can encode NaN values, encoders and application profiles commonly canonicalize NaNs or collapse them to a single preferred representation. For applications that rely on specific NaN formations, this behavior is unacceptable. This specification defines a single CBOR tag that wraps a CBOR byte string (bstr) containing 2, 4, or 8 octets representing the big-endian bit pattern of a single IEEE-754 NaN (binary16/32/64). The tag enables exact round-tripping of NaN attributes independent of the policies that an ecosystem applies to floating-point numbers.
+
+# Conventions and Definitions
+
+{::boilerplate bcp14-tagged}
 
 # Motivation and Rationale
 
@@ -99,7 +101,7 @@ IANA is requested to register one new entry in the CBOR Tags registry ({{IANA-CB
 
 * Tag: 102 (Specification Required range).
 * Data item: byte string.
-* Semantics: IEEE-754 NaN encoded as a byte string (nan-bstr). Preserves sign, signaling/quiet bit, payload bits, and width (2/4/8 bytes in network byte order).
+* Semantics: IEEE-754 NaN encoded as a 2, 4, or 8 octet byte string (nan-bstr).
 * Reference: This document.
 
 # Implementation Notes
