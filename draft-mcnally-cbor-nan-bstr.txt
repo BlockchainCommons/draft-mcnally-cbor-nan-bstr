@@ -201,7 +201,7 @@ Table of Contents
    NaN with minimal payload 0x00000000000001 and sign bit set:
    102(h'FFF0000000000001').  CBOR encodings (hex) for the above are,
    respectively: (a) D8 66 42 7E 00 (tag(102), bstr len 2, 0x7E00), (b)
-   D8 66 44 7F C0 00 00, (c) D8 66 48 FF F0 00 00 00 00 00 01.  In all
+   D8 66 44 7F C0 00 01, (c) D8 66 48 FF F0 00 00 00 00 00 01.  In all
    cases, the content preserves sign, signaling/quiet, payload bits, and
    width exactly; applications that cannot natively represent a
    formation still retain the bit pattern for pass-through or later

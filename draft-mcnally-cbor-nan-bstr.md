@@ -81,7 +81,7 @@ Deterministic profiles often restrict or canonicalize floating-point representat
 
 # Examples and Diagnostic Notation
 
-The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. (a) Half-precision quiet NaN (0x7E00): `102(h'7E00')`. (b) Single-precision quiet NaN with payload 0x000001: `102(h'7FC00001')`. (c) Double-precision signaling NaN with minimal payload 0x00000000000001 and sign bit set: `102(h'FFF0000000000001')`. CBOR encodings (hex) for the above are, respectively: (a) `D8 66 42 7E 00` (tag(102), bstr len 2, 0x7E00), (b) `D8 66 44 7F C0 00 00`, (c) `D8 66 48 FF F0 00 00 00 00 00 01`. In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
+The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. (a) Half-precision quiet NaN (0x7E00): `102(h'7E00')`. (b) Single-precision quiet NaN with payload 0x000001: `102(h'7FC00001')`. (c) Double-precision signaling NaN with minimal payload 0x00000000000001 and sign bit set: `102(h'FFF0000000000001')`. CBOR encodings (hex) for the above are, respectively: (a) `D8 66 42 7E 00` (tag(102), bstr len 2, 0x7E00), (b) `D8 66 44 7F C0 00 01`, (c) `D8 66 48 FF F0 00 00 00 00 00 01`. In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
 
 # CDDL
 
