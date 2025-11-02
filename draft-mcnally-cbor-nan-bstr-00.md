@@ -3,6 +3,7 @@ title: A CBOR Tag for Lossless Transport of IEEE-754 NaN Bit Patterns
 abbrev: nan-bstr
 docname: draft-mcnally-cbor-nan-bstr-00
 category: std
+stream: IETF
 ipr: trust200902
 area: ART
 workgroup: CBOR
@@ -40,7 +41,6 @@ informative:
   CBOR-WG-NaN-Threads:
     title: CBOR WG mailing list threads on NaN and determinism
     target: https://mailarchive.ietf.org/arch/browse/cbor/?q=NaN
-date: 2025-10-24
 ---
 
 --- abstract
@@ -81,7 +81,7 @@ Deterministic profiles often restrict or canonicalize floating-point representat
 
 # Examples and Diagnostic Notation
 
-The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. (a) Half-precision quiet NaN (0x7E00): `102(h'7E00')`. (b) Single-precision quiet NaN with payload 0x000001: `102(h'7FC00001')`. (c) Double-precision signaling NaN with minimal payload 0x00000000000001 and sign bit set: `102(h'FFF0000000000001')`. CBOR encodings (hex) for the above are, respectively: (a) `D8 66 42 7E 00` (tag(102), bstr len 2, 0x7E00), (b) `D8 66 44 7F C0 00 00`, (c) `D8 66 48 FF F0 00 00 00 00 00 01`. In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
+The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. (a) Half-precision quiet NaN (0x7E00): `102(h'7E00')`. (b) Single-precision quiet NaN with payload 0x000001: `102(h'7FC00001')`. (c) Double-precision signaling NaN with minimal payload 0x00000000000001 and sign bit set: `102(h'FFF0000000000001')`. CBOR encodings (hex) for the above are, respectively: (a) `D8 66 42 7E 00` (tag(102), bstr len 2, 0x7E00), (b) `D8 66 44 7F C0 00 01`, (c) `D8 66 48 FF F0 00 00 00 00 00 01`. In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
 
 # CDDL
 
@@ -106,10 +106,18 @@ IANA is requested to register one new entry in the CBOR Tags registry ({{IANA-CB
 
 # Implementation Notes
 
+This section is non-normative.
+
 Encoders SHOULD use definite-length bstrs. Decoders SHOULD expose APIs that surface width, sign, signaling/quiet, and payload without mutating bits. Implementations SHOULD avoid using nan-bstr values as map keys because NaN equivalence is undefined; generic CBOR guidance on key equivalence applies ({{RFC8949}}). Profiles that otherwise canonicalize floating-point NaNs can retain those rules and treat nan-bstr as the explicit mechanism for exact preservation when needed.
+
+# Alternatives Considered
+
+This section is non-normative.
+
+The CBOR Tags registry defines tags 80-87 for various permutations of "IEEE 754 binary&lt;length&gt;, &lt;endianness&gt;, Typed Array" ({{IANA-CBOR-TAGS}}). These tags may be used to preserve exact bit patterns of floating-point values, including NaNs. However, they do not connote the special semantics of NaNs, such as incomparability and payload significance. Using those tags for NaNs could mislead implementers into treating tagged values as ordinary numbers, risking unintended comparisons or arithmetic. A dedicated nan-bstr tag clarifies intent and avoids semantic confusion.
 
 # Acknowledgments
 
-Thanks to CBOR WG participants for discussion of determinism and floating-point edge cases, and to implementers who documented NaN canonicalization behavior across platforms.
+Thanks to CBOR WG participants for discussion of determinism and floating-point edge cases, and to implementers who documented NaN canonicalization and processing behavior across platforms.
 
 --- back
