@@ -32,7 +32,7 @@ $ make next
 Build the `gh-pages` branch with:
 
 ```sh
-$ make gh-pages
+$ MAKE_TRACE=1 make gh-pages
 ```
 
 Show unpushed commits on the `gh-pages` branch with:
