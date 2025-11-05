@@ -83,12 +83,12 @@ Deterministic rules often restrict or canonicalize floating-point representation
 
 The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. The following table presents examples for each supported width:
 
-| Width     | Description                                                                   | Diagnostic Notation                        | CBOR Encoding (hex)                                        |
-| --------- | ----------------------------------------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------- |
-| binary16  | Half-precision quiet NaN (0x7E00)                                             | `102(h'7E00')`                             | `D8 66 42 7E 00`                                           |
-| binary32  | Single-precision quiet NaN with payload 0x000001                              | `102(h'7FC00001')`                         | `D8 66 44 7F C0 00 01`                                     |
-| binary64  | Double-precision signaling NaN with payload 0x00000000000001 and sign bit set | `102(h'FFF0000000000001')`                 | `D8 66 48 FF F0 00 00 00 00 00 01`                         |
-| binary128 | Quad-precision quiet NaN with payload 0x0000000000000000000000000001          | `102(h'7FFF8000000000000000000000000001')` | `D8 66 50 7F FF 80 00 00 00 00 00 00 00 00 00 00 00 00 01` |
+| Width     | Description                                                                   | Diagnostic Notation                                 | CBOR Encoding (hex)                               |
+| --------- | ----------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------- |
+| binary16  | Half-precision quiet NaN (0x7E00)                                             | `102( h'7E00' )`                                    | `D866 42 7E00`                                    |
+| binary32  | Single-precision quiet NaN with payload 0x000001                              | `102( h'7FC0 0001' )`                               | `D866 44 7FC0 0001`                               |
+| binary64  | Double-precision signaling NaN with payload 0x00000000000001 and sign bit set | `102( h'FFF0 0000 0000 0001' )`                     | `D866 48 FFF0 0000 0000 0001`                     |
+| binary128 | Quad-precision quiet NaN with payload 0x0000000000000000000000000001          | `102( h'7FFF 8000 0000 0000 0000 0000 0000 0001' )` | `D866 50 7FFF 8000 0000 0000 0000 0000 0000 0001` |
 
 In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
 
