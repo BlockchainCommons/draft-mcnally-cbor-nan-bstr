@@ -4,8 +4,8 @@
 
 CBOR                                                     W. McNally, Ed.
 Internet-Draft                                        Blockchain Commons
-Intended status: Standards Track                         2 November 2025
-Expires: 6 May 2026
+Intended status: Standards Track                         4 November 2025
+Expires: 8 May 2026
 
 
      A CBOR Tag for Lossless Transport of IEEE-754 NaN Bit Patterns
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 May 2026.
+   This Internet-Draft will expire on 8 May 2026.
 
 Copyright Notice
 
@@ -89,10 +89,12 @@ Table of Contents
    8.  IANA Considerations
    9.  Implementation Notes
    10. Alternatives Considered
-   11. Acknowledgments
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
+   Appendix A.  Implementation Status
+     A.1.  Rust Implementation
+   Appendix B.  Acknowledgments
    Author's Address
 
 1.  Introduction
@@ -200,31 +202,34 @@ Table of Contents
    notation shows tags in decimal by default.  The following table
    presents examples for each supported width:
 
-   +=========+==============================+========================================+========+
-   |Width    |Description                   |Diagnostic Notation                     |CBOR    |
-   |         |                              |                                        |Encoding|
-   |         |                              |                                        |(hex)   |
-   +=========+==============================+========================================+========+
-   |binary16 |Half-precision quiet NaN      |102(h'7E00')                            |D8 66 42|
-   |         |(0x7E00)                      |                                        |7E 00   |
-   +---------+------------------------------+----------------------------------------+--------+
-   |binary32 |Single-precision quiet NaN    |102(h'7FC00001')                        |D8 66 44|
-   |         |with payload 0x000001         |                                        |7F C0 00|
-   |         |                              |                                        |01      |
-   +---------+------------------------------+----------------------------------------+--------+
-   |binary64 |Double-precision signaling NaN|102(h'FFF0000000000001')                |D8 66 48|
-   |         |with payload 0x00000000000001 |                                        |FF F0 00|
-   |         |and sign bit set              |                                        |00 00 00|
-   |         |                              |                                        |00 01   |
-   +---------+------------------------------+----------------------------------------+--------+
-   |binary128|Quad-precision quiet NaN with |102(h'7FFF8000000000000000000000000001')|D8 66 50|
-   |         |payload                       |                                        |7F FF 80|
-   |         |0x0000000000000000000000000001|                                        |00 00 00|
-   |         |                              |                                        |00 00 00|
-   |         |                              |                                        |00 00 00|
-   |         |                              |                                        |00 00 00|
-   |         |                              |                                        |01      |
-   +---------+------------------------------+----------------------------------------+--------+
+   +===========+================================+============+=========+
+   | Width     | Description                    | Diagnostic |CBOR     |
+   |           |                                | Notation   |Encoding |
+   |           |                                |            |(hex)    |
+   +===========+================================+============+=========+
+   | binary16  | Half-precision quiet NaN       | 102(       |D866 42  |
+   |           | (0x7E00)                       | h'7E00' )  |7E00     |
+   +-----------+--------------------------------+------------+---------+
+   | binary32  | Single-precision quiet NaN     | 102(       |D866 44  |
+   |           | with payload 0x000001          | h'7FC0     |7FC0     |
+   |           |                                | 0001' )    |0001     |
+   +-----------+--------------------------------+------------+---------+
+   | binary64  | Double-precision signaling NaN | 102(       |D866 48  |
+   |           | with payload 0x00000000000001  | h'FFF0     |FFF0     |
+   |           | and sign bit set               | 0000 0000  |0000     |
+   |           |                                | 0001' )    |0000     |
+   |           |                                |            |0001     |
+   +-----------+--------------------------------+------------+---------+
+   | binary128 | Quad-precision quiet NaN with  | 102(       |D866 50  |
+   |           | payload                        | h'7FFF     |7FFF     |
+   |           | 0x0000000000000000000000000001 | 8000 0000  |8000     |
+   |           |                                | 0000 0000  |0000     |
+   |           |                                | 0000 0000  |0000     |
+   |           |                                | 0001' )    |0000     |
+   |           |                                |            |0000     |
+   |           |                                |            |0000     |
+   |           |                                |            |0001     |
+   +-----------+--------------------------------+------------+---------+
 
                                   Table 1
 
@@ -295,15 +300,9 @@ Table of Contents
    unintended comparisons or arithmetic.  A dedicated nan-bstr tag
    clarifies intent and avoids semantic confusion.
 
-11.  Acknowledgments
+11.  References
 
-   Thanks to CBOR WG participants for discussion of determinism and
-   floating-point edge cases, and to implementers who documented NaN
-   canonicalization and processing behavior across platforms.
-
-12.  References
-
-12.1.  Normative References
+11.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -325,7 +324,7 @@ Table of Contents
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
 
-12.2.  Informative References
+11.2.  Informative References
 
    [CBOR-WG-NaN-Threads]
               "CBOR WG mailing list threads on NaN and determinism",
@@ -353,8 +352,65 @@ Table of Contents
               <https://browser.training.ret2.systems/content/
               module_1/8_jsc_internals/exercises/jsc_nan_boxing>.
 
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <https://www.rfc-editor.org/rfc/rfc7942>.
+
    [WASM-NaN] "WebAssembly issue", n.d.,
               <https://github.com/WebAssembly/design/issues/1463>.
+
+Appendix A.  Implementation Status
+
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of publication,
+   and is based on a proposal described in [RFC7942].  The description
+   of implementations in this section is intended to assist the IETF in
+   its decision processes in progressing drafts to RFCs.  Please note
+   that the listing of any individual implementation here does not imply
+   endorsement by the IETF.  Furthermore, no effort has been spent to
+   verify the information presented here that was supplied by IETF
+   contributors.  This is not intended as, and must not be construed to
+   be, a catalog of available implementations or their features.
+   Readers are advised to note that other implementations may exist.
+
+A.1.  Rust Implementation
+
+   Organization: Blockchain Commons
+
+   Name: cbor-nan-bstr-rust
+
+   Description: A Rust implementation providing encoding and decoding
+   support for CBOR tag 102 (nan-bstr).  The implementation includes
+   functions to encode IEEE-754 NaN bit patterns as CBOR byte strings
+   and decode them back, preserving all NaN attributes including sign,
+   signaling/quiet bit, payload bits, and width.
+
+   Level of Maturity: Development
+
+   Coverage: The implementation covers encoding and decoding of all four
+   supported widths (binary16, binary32, binary64, binary128) with full
+   validation of NaN bit patterns.
+
+   Version Compatibility: This implementation is compatible with the
+   current draft specification.
+
+   Licensing: BSD-2-Clause-Patent
+
+   Implementation Experience: No issues have been encountered during
+   development.  The implementation demonstrates that the tag provides a
+   practical mechanism for exact NaN preservation across CBOR encode/
+   decode cycles.
+
+   Contact: Wolf McNally (wolf@wolfmcnally.com)
+
+   URL: https://github.com/BlockchainCommons/cbor-nan-bstr-rust
+
+Appendix B.  Acknowledgments
+
+   Thanks to CBOR WG participants for discussion of determinism and
+   floating-point edge cases, and to implementers who documented NaN
+   canonicalization and processing behavior across platforms.
 
 Author's Address
 

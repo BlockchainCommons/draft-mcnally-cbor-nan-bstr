@@ -1016,7 +1016,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">McNally</td>
-<td class="center">Expires 6 May 2026</td>
+<td class="center">Expires 8 May 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1029,12 +1029,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-mcnally-cbor-nan-bstr-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-11-02" class="published">2 November 2025</time>
+<time datetime="2025-11-04" class="published">4 November 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-05-06">6 May 2026</time></dd>
+<dd class="expires"><time datetime="2026-05-08">8 May 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1084,7 +1084,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 May 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 May 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1158,21 +1158,29 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-alternatives-considered" class="internal xref">Alternatives Considered</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-implementation-status" class="internal xref">Implementation Status</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
-                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
-                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+                <p id="section-toc.1-1.12.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-rust-implementation" class="internal xref">Rust Implementation</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1265,40 +1273,40 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
             <td class="text-left" rowspan="1" colspan="1">binary16</td>
             <td class="text-left" rowspan="1" colspan="1">Half-precision quiet NaN (0x7E00)</td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>102(h'7E00')</code>
+              <code>102( h'7E00' )</code>
 </td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>D8 66 42 7E 00</code>
+              <code>D866 42 7E00</code>
 </td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">binary32</td>
             <td class="text-left" rowspan="1" colspan="1">Single-precision quiet NaN with payload 0x000001</td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>102(h'7FC00001')</code>
+              <code>102( h'7FC0 0001' )</code>
 </td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>D8 66 44 7F C0 00 01</code>
+              <code>D866 44 7FC0 0001</code>
 </td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">binary64</td>
             <td class="text-left" rowspan="1" colspan="1">Double-precision signaling NaN with payload 0x00000000000001 and sign bit set</td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>102(h'FFF0000000000001')</code>
+              <code>102( h'FFF0 0000 0000 0001' )</code>
 </td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>D8 66 48 FF F0 00 00 00 00 00 01</code>
+              <code>D866 48 FFF0 0000 0000 0001</code>
 </td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">binary128</td>
             <td class="text-left" rowspan="1" colspan="1">Quad-precision quiet NaN with payload 0x0000000000000000000000000001</td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>102(h'7FFF8000000000000000000000000001')</code>
+              <code>102( h'7FFF 8000 0000 0000 0000 0000 0000 0001' )</code>
 </td>
             <td class="text-left" rowspan="1" colspan="1">
-              <code>D8 66 50 7F FF 80 00 00 00 00 00 00 00 00 00 00 00 00 01</code>
+              <code>D866 50 7FFF 8000 0000 0000 0000 0000 0000 0001</code>
 </td>
           </tr>
         </tbody>
@@ -1378,23 +1386,15 @@ nan-bstr = #6.102 (bstr .size (2 / 4 / 8 / 16))
 <p id="section-10-2">The CBOR Tags registry defines tags 80-87 for various permutations of "IEEE 754 binary&lt;length&gt;, &lt;endianness&gt;, Typed Array" (<span>[<a href="#IANA-CBOR-TAGS" class="cite xref">IANA-CBOR-TAGS</a>]</span>). These tags may be used to preserve exact bit patterns of floating-point values, including NaNs. However, they do not connote the special semantics of NaNs, such as incomparability and payload significance. Using those tags for NaNs could mislead implementers into treating tagged values as ordinary numbers, risking unintended comparisons or arithmetic. A dedicated nan-bstr tag clarifies intent and avoids semantic confusion.<a href="#section-10-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="acknowledgments">
-<section id="section-11">
-      <h2 id="name-acknowledgments">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
-      </h2>
-<p id="section-11-1">Thanks to CBOR WG participants for discussion of determinism and floating-point edge cases, and to implementers who documented NaN canonicalization and processing behavior across platforms.<a href="#section-11-1" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="sec-combined-references">
-<section id="section-12">
+<section id="section-11">
       <h2 id="name-references">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-12.1">
+<section id="section-11.1">
         <h3 id="name-normative-references">
-<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
@@ -1417,9 +1417,9 @@ nan-bstr = #6.102 (bstr .size (2 / 4 / 8 / 16))
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-12.2">
+<section id="section-11.2">
         <h3 id="name-informative-references">
-<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="CBOR-WG-NaN-Threads">[CBOR-WG-NaN-Threads]</dt>
@@ -1442,6 +1442,10 @@ nan-bstr = #6.102 (bstr .size (2 / 4 / 8 / 16))
         <dd>
 <span class="refTitle">"JavaScriptCore NaN Boxing exercise"</span>, <span>n.d.</span>, <span>&lt;<a href="https://browser.training.ret2.systems/content/module_1/8_jsc_internals/exercises/jsc_nan_boxing">https://browser.training.ret2.systems/content/module_1/8_jsc_internals/exercises/jsc_nan_boxing</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7942">[RFC7942]</dt>
+        <dd>
+<span class="refAuthor">Sheffer, Y.</span> and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"Improving Awareness of Running Code: The Implementation Status Section"</span>, <span class="seriesInfo">BCP 205</span>, <span class="seriesInfo">RFC 7942</span>, <span class="seriesInfo">DOI 10.17487/RFC7942</span>, <time datetime="2016-07" class="refDate">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7942">https://www.rfc-editor.org/rfc/rfc7942</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="WASM-NaN">[WASM-NaN]</dt>
       <dd>
 <span class="refTitle">"WebAssembly issue"</span>, <span>n.d.</span>, <span>&lt;<a href="https://github.com/WebAssembly/design/issues/1463">https://github.com/WebAssembly/design/issues/1463</a>&gt;</span>. </dd>
@@ -1451,8 +1455,41 @@ nan-bstr = #6.102 (bstr .size (2 / 4 / 8 / 16))
 </div>
 </section>
 </div>
-<div id="authors-addresses">
+<div id="implementation-status">
 <section id="appendix-A">
+      <h2 id="name-implementation-status">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-implementation-status" class="section-name selfRef">Implementation Status</a>
+      </h2>
+<p id="appendix-A-1">This section records the status of known implementations of the protocol defined by this specification at the time of publication, and is based on a proposal described in <span>[<a href="#RFC7942" class="cite xref">RFC7942</a>]</span>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<div id="rust-implementation">
+<section id="appendix-A.1">
+        <h3 id="name-rust-implementation">
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-rust-implementation" class="section-name selfRef">Rust Implementation</a>
+        </h3>
+<p id="appendix-A.1-1">Organization: Blockchain Commons<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-2">Name: cbor-nan-bstr-rust<a href="#appendix-A.1-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-3">Description: A Rust implementation providing encoding and decoding support for CBOR tag 102 (nan-bstr). The implementation includes functions to encode IEEE-754 NaN bit patterns as CBOR byte strings and decode them back, preserving all NaN attributes including sign, signaling/quiet bit, payload bits, and width.<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-4">Level of Maturity: Development<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-5">Coverage: The implementation covers encoding and decoding of all four supported widths (binary16, binary32, binary64, binary128) with full validation of NaN bit patterns.<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-6">Version Compatibility: This implementation is compatible with the current draft specification.<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-7">Licensing: BSD-2-Clause-Patent<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-8">Implementation Experience: No issues have been encountered during development. The implementation demonstrates that the tag provides a practical mechanism for exact NaN preservation across CBOR encode/decode cycles.<a href="#appendix-A.1-8" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-9">Contact: Wolf McNally (wolf@wolfmcnally.com)<a href="#appendix-A.1-9" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-10">URL: https://github.com/BlockchainCommons/cbor-nan-bstr-rust<a href="#appendix-A.1-10" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-B">
+      <h2 id="name-acknowledgments">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="appendix-B-1">Thanks to CBOR WG participants for discussion of determinism and floating-point edge cases, and to implementers who documented NaN canonicalization and processing behavior across platforms.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-C">
       <h2 id="name-authors-address">
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
