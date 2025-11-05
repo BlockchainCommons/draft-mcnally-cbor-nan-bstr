@@ -83,12 +83,12 @@ Deterministic rules often restrict or canonicalize floating-point representation
 
 The requested tag number for this specification is 102. Diagnostic notation shows tags in decimal by default. The following table presents examples for each supported width:
 
-| Width     | Description                                                                   | Diagnostic Notation                        | CBOR Encoding (hex)                                        |
-| --------- | ----------------------------------------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------- |
-| binary16  | Half-precision quiet NaN (0x7E00)                                             | `102(h'7E00')`                             | `D8 66 42 7E 00`                                           |
-| binary32  | Single-precision quiet NaN with payload 0x000001                              | `102(h'7FC00001')`                         | `D8 66 44 7F C0 00 01`                                     |
-| binary64  | Double-precision signaling NaN with payload 0x00000000000001 and sign bit set | `102(h'FFF0000000000001')`                 | `D8 66 48 FF F0 00 00 00 00 00 01`                         |
-| binary128 | Quad-precision quiet NaN with payload 0x0000000000000000000000000001          | `102(h'7FFF8000000000000000000000000001')` | `D8 66 50 7F FF 80 00 00 00 00 00 00 00 00 00 00 00 00 01` |
+| Width     | Description                                                                   | Diagnostic Notation                          | CBOR Encoding (hex)                        |
+| --------- | ----------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------ |
+| binary16  | Half-precision quiet NaN (0x7E00)                                             | `102( h'7E00' )`                             | `D866 42 7E00`                             |
+| binary32  | Single-precision quiet NaN with payload 0x000001                              | `102( h'7FC00001' )`                         | `D866 44 7FC00001`                         |
+| binary64  | Double-precision signaling NaN with payload 0x00000000000001 and sign bit set | `102( h'FFF0000000000001' )`                 | `D866 48 FFF0000000000001`                 |
+| binary128 | Quad-precision quiet NaN with payload 0x0000000000000000000000000001          | `102( h'7FFF8000000000000000000000000001' )` | `D866 50 7FFF8000000000000000000000000001` |
 
 In all cases, the content preserves sign, signaling/quiet, payload bits, and width exactly; applications that cannot natively represent a formation still retain the bit pattern for pass-through or later analysis.
 
@@ -128,8 +128,34 @@ This section is non-normative.
 
 The CBOR Tags registry defines tags 80-87 for various permutations of "IEEE 754 binary&lt;length&gt;, &lt;endianness&gt;, Typed Array" ({{IANA-CBOR-TAGS}}). These tags may be used to preserve exact bit patterns of floating-point values, including NaNs. However, they do not connote the special semantics of NaNs, such as incomparability and payload significance. Using those tags for NaNs could mislead implementers into treating tagged values as ordinary numbers, risking unintended comparisons or arithmetic. A dedicated nan-bstr tag clarifies intent and avoids semantic confusion.
 
+--- back
+
+# Implementation Status
+
+This section records the status of known implementations of the protocol defined by this specification at the time of publication, and is based on a proposal described in {{?RFC7942}}. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.
+
+## Rust Implementation
+
+Organization: Blockchain Commons
+
+Name: cbor-nan-bstr-rust
+
+Description: A Rust implementation providing encoding and decoding support for CBOR tag 102 (nan-bstr). The implementation includes functions to encode IEEE-754 NaN bit patterns as CBOR byte strings and decode them back, preserving all NaN attributes including sign, signaling/quiet bit, payload bits, and width.
+
+Level of Maturity: Development
+
+Coverage: The implementation covers encoding and decoding of all four supported widths (binary16, binary32, binary64, binary128) with full validation of NaN bit patterns.
+
+Version Compatibility: This implementation is compatible with the current draft specification.
+
+Licensing: BSD-2-Clause-Patent
+
+Implementation Experience: No issues have been encountered during development. The implementation demonstrates that the tag provides a practical mechanism for exact NaN preservation across CBOR encode/decode cycles.
+
+Contact: Wolf McNally (wolf@wolfmcnally.com)
+
+URL: https://github.com/BlockchainCommons/cbor-nan-bstr-rust
+
 # Acknowledgments
 
 Thanks to CBOR WG participants for discussion of determinism and floating-point edge cases, and to implementers who documented NaN canonicalization and processing behavior across platforms.
-
---- back
